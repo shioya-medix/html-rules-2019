@@ -1,0 +1,9 @@
+#
+# GitPitch - The Markdown Presentation Service on GitHub
+#
+
+#
+# Theme Setting
+# Doc: https://gitpitch.com/docs/settings/theme
+#
+theme : moon
