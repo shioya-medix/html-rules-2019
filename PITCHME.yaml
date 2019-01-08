@@ -13,3 +13,8 @@ theme : moon
 # Doc: https://gitpitch.com/docs/settings/custom-theme
 #
 theme-override: assets/css/PITCHME.css
+
+# Footnote Setting
+# Doc: https://gitpitch.com/docs/settings/footnote
+#
+footnote : "© Medix Inc. All rights reserved."
