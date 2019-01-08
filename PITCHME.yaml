@@ -7,3 +7,9 @@
 # Doc: https://gitpitch.com/docs/settings/theme
 #
 theme : moon
+
+#
+# Theme-Override Setting
+# Doc: https://gitpitch.com/docs/settings/custom-theme
+#
+theme-override: assets/css/PITCHME.css
