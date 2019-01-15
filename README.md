@@ -7,7 +7,7 @@
 1. 本規約の目的と方針
 2. 対象ブラウザ
 3. レスポンシブデザインの方針
-4. 開発情報の確認
+4. ディレクトリ構成
 6. HTML
 7. CSS
 8. Javascript
@@ -49,6 +49,52 @@
 ### スマートフォン
 - iOS11 Safari
 
+
+
+# ディレクトリ構成
+
+
+
+### 基本的なディレクトリ構成
+- 新規かつスタティックな中規模サイト構築時の例
+```
+root/
+├index.html
+├assets/
+│├css/
+││ └ style.css
+││
+│├img/
+││ ├ index/
+││ │　 └.jpg
+││ └ category01/
+││ 　 　└.jpg
+│└js/
+│　├jquery.js
+│　└common.js
+│
+│
+└category01/
+　└index.html
+```
+- シングルページ構築時の例
+```
+root/
+├index.html
+└assets/
+　├css/
+　│ └ style.css
+　│
+　├img/
+　│ ├ index/
+　│ │　 └.jpg
+　│ └ category01/
+　│ 　 　└.jpg
+　└js/
+　　├jquery.js
+　　├page.js
+　　└viewport.js
+```
 
 
 
@@ -420,7 +466,8 @@ p.body-copy {
 .wrapper .contents .inner .body-copy {
     font-size: 1.2rem;
 }
-
+```
+```
 <!-- 推奨 -->
 .red,
 .blue,
@@ -472,3 +519,9 @@ p.body-copy {
 <!-- 非推奨 -->
 <p class="body-copy mgb-20 mgr-10 pdb-20">ダミーテキスト</p>
 ```
+
+
+
+# Javascript
+
+
