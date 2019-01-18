@@ -7,7 +7,7 @@
 1. 本規約の目的と方針
 2. 対象ブラウザ
 3. レスポンシブデザインの方針
-4. 開発情報の確認
+4. ディレクトリ構成
 6. HTML
 7. CSS
 8. Javascript
@@ -49,10 +49,99 @@
 ### スマートフォン
 - iOS11 Safari
 
+---
+
+# ディレクトリ構成
+
+---
+
+### 基本的なディレクトリ構成
+- 新規かつスタティックな中規模サイト構築時の例
+```
+root/
+├index.html
+├assets/
+│　　　├css/
+│　　　│ └ style.css
+│　　　│
+│　　　├img/
+│　　　│ ├ index/
+│　　　│ │　 └.jpg
+│　　　│ └ category01/
+│　　　│ 　 　└.jpg
+│　　　└js/
+│　　　　├jquery.js
+│　　　　└common.js
+│
+│
+└category01/
+　　　　└index.html
+```
+- シングルページ構築時の例
+```
+root/
+├index.html
+└assets/
+　　　├css/
+　　　│ └ style.css
+　　　│
+　　　├img/
+　　　│ ├ index/
+　　　│ │　 └.jpg
+　　　│ └ category01/
+　　　│ 　 　└.jpg
+　　　└js/
+　　　　├jquery.js
+　　　　├page.js
+　　　　└viewport.js
+```
+
+---
+
+### ディレクトリ名使用文字
+ディレクトリ名に使用できる文字は下記になります。
+
+- 「a」～「z」までの小文字のアルファベット（1バイト）
+- 「0」～「9」までの英数字（1バイト）
+- 「-（ハイフン）」と「`_`（アンダースコア）」（いずれも1バイト）
+- 先頭には「`-`（ハイフン）」「`_`（アンダースコア）」を使用しない。
+- スペースは使用しない。
+
 
 ---
 
 # HTML
+
+---
+
+## HTMLスタイルルール
+
+---
+
+### ドキュメントタイプ
+新規作成のものは原則、HTML5を使用します。  
+要件に応じて、別の形式（XHTML 1.1 Strict、HTML 4.01 Strict、HTML 4.01 Transitional、など）を採用する場合もあります。
+
+
+---
+
+### タイプ属性
+スタイルシートとスクリプトのtype属性は省略します。  
+HTML5はデフォルトで text/css と text/javascript を意味するため、type属性を指定する必要はありません。
+
+```
+<!-- 推奨 -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css">
+
+<!-- 非推奨 -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css" type="text/css">
+
+<!-- 推奨 -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
+
+<!-- 非推奨 -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js" type="text/javascript"></script>
+```
 
 ---
 
@@ -112,37 +201,6 @@ HTML要素名、属性、属性値（text/CDATAを除く）、CSSセレクタ、
 
 <!-- 非推奨 -->
 <A HREF="/about/">Home</A>
-```
-
----
-
-## HTMLスタイルルール
-
----
-
-### ドキュメントタイプ
-新規作成のものは原則、HTML5を使用します。  
-要件に応じて、別の形式（XHTML 1.1 Strict、HTML 4.01 Strict、HTML 4.01 Transitional、など）を採用する場合もあります。
-
-
----
-
-### タイプ属性
-スタイルシートとスクリプトのtype属性は省略します。  
-HTML5はデフォルトで text/css と text/javascript を意味するため、type属性を指定する必要はありません。
-
-```
-<!-- 推奨 -->
-<link rel="stylesheet" href="//www.google.com/css/maia.css">
-
-<!-- 非推奨 -->
-<link rel="stylesheet" href="//www.google.com/css/maia.css" type="text/css">
-
-<!-- 推奨 -->
-<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
-
-<!-- 非推奨 -->
-<script src="//www.google.com/js/gweb/analytics/autotrack.js" type="text/javascript"></script>
 ```
 
 ---
@@ -239,8 +297,6 @@ HTML5はデフォルトで text/css と text/javascript を意味するため、
 
 ### 画像要素
 意味のある画像は、原則背景ではなくimg要素として配置します。  
-alt属性にて画像の代替となるテキストを設定します。  
-altの内容について特に指定がない場合はコーダーの判断で画像の簡易説明を設定します。  
 「width=～」「height=～」は記述しません。サイズ変更はスタイルシートで行います。
 
 ```
@@ -251,6 +307,18 @@ altの内容について特に指定がない場合はコーダーの判断で�
 <img src="sample.jpg" width="200" height="100" alt="">
  ```
 ---
+
+### 画像の命名規則
+画像の命名は以下を原則とします。  
+[ページ名・カテゴリ名] + [`_`] + ( [詳細] + [`_`] + ) [識別名]+ [連番2桁].拡張子  
+
+```
+<!-- 例 -->
+about_feature_fig01.jpg
+top_header_icon01.png
+ ```
+---
+
 
 ### コメントの挿入
 ソース内容が把握しやすいよう、ブロックの後に必ずコメントを記述します。  
@@ -353,10 +421,33 @@ HTMLのマークアップ以外にJSON-LDでのマークアップを作成し、
 
 ---
 
+### 画像要素のalt属性
+alt属性にて画像の代替となるテキストを設定します。  
+altの内容について特に指定がない場合はコーダーの判断で画像の簡易説明を設定します。  
+また、適切な代替内容が存在しない画像の場合は空のalt属性を設置します。
+
+```
+<!-- 推奨 -->
+<img src="sample.jpg" alt="サンプル画像">
+
+<!-- 非推奨 -->
+<img src="sample.jpg">
+
+<!-- 可 -->
+<img src="sample.jpg" alt="">
+
+ ```
+
+
+---
+
+
 ### 画像圧縮について
 画像圧縮はサイト表示速度改善に影響が大きいため  
-デザインからスライスした画像を下記ツールを使用し、圧縮する。  
+デザインからスライスした画像を下記ツールを使用し、圧縮します。  
 [compressor.io](https://compressor.io/)
+
+特にサイズが大きい画像（メインビジュアルなど）については圧縮を必須とします。
 
 ---
 
@@ -374,13 +465,13 @@ HTMLに合わせて記述します。原則UTF-8を使用。
 
 #### Class
 Class名には`-`で要素名を繋ぐケバブケースを使用します。
+プロジェクトよってBemなどの命名設計を使用する場合は`_`の使用も可。
 
 ```
 <!-- 推奨 -->
 <p class="body-copy">ダミーテキスト</p>
 
 <!-- 非推奨 -->
-<p class="body_copy">ダミーテキスト</p>
 <p class="bodyCopy">ダミーテキスト</p>
 ```
 
@@ -390,12 +481,6 @@ Class名には`-`で要素名を繋ぐケバブケースを使用します。
 IDはスタイル指定には使用しません。
 アンカーリンクの対象となる要素を除き、原則としてClassのみを使用してコーディングしてください。  
 アンカーリンクの対象となる要素に関しても、通常通りにClassでスタイルを付与した後に、アンカーリンク用としてIDを付与して下さい。
-
----
-
-### CSS・SCSSについて
-CSSの書き方に関するガイドラインは作業用ファイルに対して適応します。
-Sassを標準で使用するになったため、コンパイル後のCSSについては
 
 ---
 
@@ -473,5 +558,33 @@ p.body-copy {
 <!-- 非推奨 -->
 <p class="body-copy mgb-20 mgr-10 pdb-20">ダミーテキスト</p>
 ```
+
+---
+
+# Javascript
+
+---
+
+### 記述場所の前提
+メンテナンス性を考慮し、スクリプトは原則外部ファイル化します。  
+また、読み込み位置は</body>直前とします。
+</body>直前に計測タグがある場合はその前に記述してください。
+
+```
+<!-- 推奨 -->
+    <script src="/assets/js/common.js"></script>
+</body>
+```
+
+---
+
+### 文字コード
+HTMLに合わせて記述します。原則UTF-8を使用。  
+ただし、プラグインなどダウンロードして使用するものについては変更しません。
+
+---
+
+### document.write
+document.writeは原則使用しません。
 
 ---
