@@ -6,10 +6,11 @@
 
 1. 本規約の目的と方針
 2. 対象ブラウザ
-3. ディレクトリ構成
-4. HTML
-5. CSS
-6. Javascript
+3. レスポンシブデザインの方針
+4. ディレクトリ構成
+6. HTML
+7. CSS
+8. Javascript
 
 
 
@@ -60,39 +61,39 @@
 root/
 ├index.html
 ├assets/
-│├css/
-││ └ style.css
-││
-│├img/
-││ ├ index/
-││ │　 └.jpg
-││ └ category01/
-││ 　 　└.jpg
-│└js/
-│　├jquery.js
-│　└common.js
+│　　　├css/
+│　　　│ └ style.css
+│　　　│
+│　　　├img/
+│　　　│ ├ index/
+│　　　│ │　 └.jpg
+│　　　│ └ category01/
+│　　　│ 　 　└.jpg
+│　　　└js/
+│　　　　├jquery.js
+│　　　　└common.js
 │
 │
 └category01/
-　└index.html
+　　　　└index.html
 ```
 - シングルページ構築時の例
 ```
 root/
 ├index.html
 └assets/
-　├css/
-　│ └ style.css
-　│
-　├img/
-　│ ├ index/
-　│ │　 └.jpg
-　│ └ category01/
-　│ 　 　└.jpg
-　└js/
-　　├jquery.js
-　　├page.js
-　　└viewport.js
+　　　├css/
+　　　│ └ style.css
+　　　│
+　　　├img/
+　　　│ ├ index/
+　　　│ │　 └.jpg
+　　　│ └ category01/
+　　　│ 　 　└.jpg
+　　　└js/
+　　　　├jquery.js
+　　　　├page.js
+　　　　└viewport.js
 ```
 
 
@@ -110,6 +111,37 @@ root/
 
 
 # HTML
+
+
+
+## HTMLスタイルルール
+
+
+
+### ドキュメントタイプ
+新規作成のものは原則、HTML5を使用します。  
+要件に応じて、別の形式（XHTML 1.1 Strict、HTML 4.01 Strict、HTML 4.01 Transitional、など）を採用する場合もあります。
+
+
+
+
+### タイプ属性
+スタイルシートとスクリプトのtype属性は省略します。  
+HTML5はデフォルトで text/css と text/javascript を意味するため、type属性を指定する必要はありません。
+
+```
+<!-- 推奨 -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css">
+
+<!-- 非推奨 -->
+<link rel="stylesheet" href="//www.google.com/css/maia.css" type="text/css">
+
+<!-- 推奨 -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
+
+<!-- 非推奨 -->
+<script src="//www.google.com/js/gweb/analytics/autotrack.js" type="text/javascript"></script>
+```
 
 
 
@@ -169,37 +201,6 @@ HTML要素名、属性、属性値（text/CDATAを除く）、CSSセレクタ、
 
 <!-- 非推奨 -->
 <A HREF="/about/">Home</A>
-```
-
-
-
-## HTMLスタイルルール
-
-
-
-### ドキュメントタイプ
-新規作成のものは原則、HTML5を使用します。  
-要件に応じて、別の形式（XHTML 1.1 Strict、HTML 4.01 Strict、HTML 4.01 Transitional、など）を採用する場合もあります。
-
-
-
-
-### タイプ属性
-スタイルシートとスクリプトのtype属性は省略します。  
-HTML5はデフォルトで text/css と text/javascript を意味するため、type属性を指定する必要はありません。
-
-```
-<!-- 推奨 -->
-<link rel="stylesheet" href="//www.google.com/css/maia.css">
-
-<!-- 非推奨 -->
-<link rel="stylesheet" href="//www.google.com/css/maia.css" type="text/css">
-
-<!-- 推奨 -->
-<script src="//www.google.com/js/gweb/analytics/autotrack.js"></script>
-
-<!-- 非推奨 -->
-<script src="//www.google.com/js/gweb/analytics/autotrack.js" type="text/javascript"></script>
 ```
 
 
@@ -296,8 +297,6 @@ HTML5はデフォルトで text/css と text/javascript を意味するため、
 
 ### 画像要素
 意味のある画像は、原則背景ではなくimg要素として配置します。  
-alt属性にて画像の代替となるテキストを設定します。  
-altの内容について特に指定がない場合はコーダーの判断で画像の簡易説明を設定します。  
 「width=～」「height=～」は記述しません。サイズ変更はスタイルシートで行います。
 
 ```
@@ -422,10 +421,33 @@ HTMLのマークアップ以外にJSON-LDでのマークアップを作成し、
 
 
 
+### 画像要素のalt属性
+alt属性にて画像の代替となるテキストを設定します。  
+altの内容について特に指定がない場合はコーダーの判断で画像の簡易説明を設定します。  
+また、適切な代替内容が存在しない画像の場合は空のalt属性を設置します。
+
+```
+<!-- 推奨 -->
+<img src="sample.jpg" alt="サンプル画像">
+
+<!-- 非推奨 -->
+<img src="sample.jpg">
+
+<!-- 可 -->
+<img src="sample.jpg" alt="">
+
+ ```
+
+
+
+
+
 ### 画像圧縮について
 画像圧縮はサイト表示速度改善に影響が大きいため  
-デザインからスライスした画像を下記ツールを使用し、圧縮する。  
+デザインからスライスした画像を下記ツールを使用し、圧縮します。  
 [compressor.io](https://compressor.io/)
+
+特にサイズが大きい画像（メインビジュアルなど）については圧縮を必須とします。
 
 
 
@@ -443,13 +465,13 @@ HTMLに合わせて記述します。原則UTF-8を使用。
 
 #### Class
 Class名には`-`で要素名を繋ぐケバブケースを使用します。
+プロジェクトよってBemなどの命名設計を使用する場合は`_`の使用も可。
 
 ```
 <!-- 推奨 -->
 <p class="body-copy">ダミーテキスト</p>
 
 <!-- 非推奨 -->
-<p class="body_copy">ダミーテキスト</p>
 <p class="bodyCopy">ダミーテキスト</p>
 ```
 
@@ -559,5 +581,10 @@ p.body-copy {
 ### 文字コード
 HTMLに合わせて記述します。原則UTF-8を使用。  
 ただし、プラグインなどダウンロードして使用するものについては変更しません。
+
+
+
+### document.write
+document.writeは原則使用しません。
 
 
