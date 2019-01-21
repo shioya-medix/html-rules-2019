@@ -47,6 +47,7 @@
 
 ### スマートフォン
 - iOS11 Safari
+- Android 5.x以上のChrome
 
 
 
@@ -168,8 +169,15 @@ HTML5はデフォルトで text/css と text/javascript を意味するため、
 ### 改行コード・文字コード
 改行コード・文字コードは下記に設定します。
 
+#### Windows
 - 改行コード　CR+LF(Windows標準の改行コード)
-- 文字コード　UTF-8
+
+#### Mac or Linux
+- 改行コード　LF
+
+
+#### 文字コード
+- UTF-8
 
 
 ### 機種依存文字
@@ -346,12 +354,21 @@ SSIインクルードとの競合などを防ぐため、セレクタは省略�
 PCSPでソースが異なる場合はalternateタグも合わせて記述します。
 
 ```
-<!-- 推奨 -->
+<!-- 推奨：レスポンシブ or　PCのみの場合 -->
 <head>
 
 <link rel="canonical" href="http://www.example.com/">
 
 </head>
+
+<!-- 推奨：PCSPセパレートの場合 -->
+<head>
+
+<link rel="canonical" href="http://www.example.com/">
+<link rel="alternate" media="only screen and (max-width: 767px)" href="http://www.example.com/sp/" />
+
+</head>
+
 ```
 
 
@@ -461,6 +478,7 @@ HTMLに合わせて記述します。原則UTF-8を使用。
 
 ### ID・Class名
 原則、意味のある名前を設定します。
+また、クラス名・ID名の最初の文字に数字を使わないでください。
 
 #### Class
 Class名には`-`で要素名を繋ぐケバブケースを使用します。  
@@ -560,6 +578,42 @@ p.body-copy {
 
 
 
+### CSSコメントの挿入
+ソース内容が把握しやすいよう、CSSにも必ずコメントを記述します。  
+スタイルを当てているHTMLブロック、またはコンポーネントの名称を大タイトルとし、  
+更に特筆すべきコンポーネントがある場合はサブタイトルを記述します。  
+記述位置はそれぞれ対象スタイルの前行とします。
+
+```
+<!-- コメント記述例 -->
+
+/*
+header (大タイトル)
+*/
+.header {
+    width: 100%;
+}
+
+/*global-navi　（サブタイトル）
+*/
+.global-navi {
+    width: 100%;
+}
+
+/*
+layout (大タイトル)
+*/
+.flex {
+    display: flex;
+}
+
+.l-col2 {
+    width: 49%;
+}
+```
+
+
+
 # Javascript
 
 
@@ -585,5 +639,18 @@ HTMLに合わせて記述します。原則UTF-8を使用。
 
 ### document.write
 document.writeは原則使用しません。
+
+
+
+### jQuery
+jQueryを使用する場合は2.x系安定バージョンの使用を推奨します。  
+ただし、要件によっては1.x系を使用する場合があります。  
+また、表示速度を考慮し、特に指定がない場合はCDNでの読み込みとします。
+
+```
+<!-- 推奨 -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js"></script>
+</body>
+```
 
 
