@@ -222,9 +222,11 @@ HTML要素名、属性、属性値（text/CDATAを除く）、CSSセレクタ、
 
 ```
 <!-- 推奨 -->
+<h2>見出しテキスト</h2>
 <a href="recommendations/">All recommendations</a>
 
 <!-- 非推奨 -->
+<p>見出しテキスト</p>
 <div onclick="goToRecommendations();">All recommendations</div>
 ```
 
