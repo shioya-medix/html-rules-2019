@@ -86,10 +86,9 @@ root/
 　　　│ └ style.css
 　　　│
 　　　├img/
-　　　│ ├ index/
-　　　│ │　 └.jpg
-　　　│ └ category01/
-　　　│ 　 　└.jpg
+　　　│  └.jpg
+　　　│  └.png
+　　　│ 　 
 　　　└js/
 　　　　├jquery.js
 　　　　├page.js
